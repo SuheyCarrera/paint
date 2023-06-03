@@ -153,12 +153,65 @@ command_list = {
     "rectangulo_dibujar": rectangulo1.dibujar
 }
 
+# Comando help para mostrar los comandos disponibles
+def mostrar_comandos():
+    print("Comandos disponibles:")
+    for command in command_list:
+        print("-", command)
+        # Ejemplo de uso para cada comando
+        if command == "linea -h":
+            print("   Ejemplo: linea -h")
+        elif command == "linea -v":
+            print("   Ejemplo: linea -v")
+        elif command == "borrar":
+            print("   Ejemplo: borrar")
+        elif command == "fondo":
+            print("   Ejemplo: fondo rojo")
+        elif command == "trazo":
+            print("   Ejemplo: trazo azul")
+        elif command == "pixelsize":
+            print("   Ejemplo: pixelsize 3")
+        elif command == "cuadrado":
+            print("   Ejemplo: cuadrado 200 200 100")
+        elif command == "rectangulo":
+            print("   Ejemplo: rectangulo 300 300 200 100")
+        elif command == "circulo":
+            print("   Ejemplo: circulo 400 400 50")
+        elif command == "triangulo_equilatero":
+            print("   Ejemplo: triangulo_equilatero 500 500 100")
+        elif command == "triangulo_escaleno":
+            print("   Ejemplo: triangulo_escaleno 600 600 50 80 70")
+        elif command == "triangulo_isosceles":
+            print("   Ejemplo: triangulo_isosceles 700 700 120 80")
+        elif command == "figura_mover":
+            print("   Ejemplo: figura_mover 50 -20")
+        elif command == "figura_cambiar_color":
+            print("   Ejemplo: figura_cambiar_color verde")
+        elif command == "figura_dibujar":
+            print("   Ejemplo: figura_dibujar")
+        elif command == "rectangulo_mover":
+            print("   Ejemplo: rectangulo_mover -30 40")
+        elif command == "rectangulo_cambiar_color":
+            print("   Ejemplo: rectangulo_cambiar_color rosa")
+        elif command == "rectangulo_dibujar":
+            print("   Ejemplo: rectangulo_dibujar")
+        print()
+
+    print("- color <nombre_color> (ejemplo: color rojo)")
+
+    print("Comandos disponibles:")
+    for command in command_list:
+        print("-", command)
+    print("- color <nombre_color> (ejemplo: color rojo)")
+
 # Esperar a que el usuario cierre la ventana
 running = True
 while running:
     cmd = input("cmd> ")
     tokens = cmd.split()
-    if tokens[0] in command_list:
+    if cmd == "help":
+        mostrar_comandos()
+    elif tokens[0] in command_list:
         if len(tokens) > 1:
             command_list[tokens[0]](*map(int, tokens[1:]))
         else:
